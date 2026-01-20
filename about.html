@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nama - Vitanor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for about page */
+        .about-hero {
+            padding: 6rem 0 2rem;
+            background: linear-gradient(135deg, #2E7D32 0%, #8BC34A 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .about-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-content {
+            padding: 4rem 0;
+        }
+        
+        .about-section {
+            margin-bottom: 3rem;
+        }
+        
+        .about-section h2 {
+            color: #2E7D32;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+        
+        .about-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #2C3E50;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: #2E7D32;
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .value-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2E7D32;
+        }
+        
+        @media (max-width: 768px) {
+            .about-title {
+                font-size: 2rem;
+            }
+            
+            .process-steps,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🍃</div>
+                    <span class="logo-text">VITANOR</span>
+                </a>
+                <nav class="desktop-nav">
+                    <a href="index.html">Početna</a>
+                    <a href="shop.html">Prodavnica</a>
+                    <a href="about.html" class="active">O nama</a>
+                    <a href="contact.html">Kontakt</a>
+                </nav>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Početna</a>
+            <a href="shop.html">Prodavnica</a>
+            <a href="about.html" class="active">O nama</a>
+            <a href="contact.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Vaša korpa</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Korpa je prazna</p>
+        </div>
+        <div class="cart-summary">
+            <div class="cart-totals">
+                <div class="subtotal">
+                    <span>Ukupno proizvoda:</span>
+                    <span id="cartSubtotal">0 RSD</span>
+                </div>
+                <div class="delivery">
+                    <span>Dostava:</span>
+                    <span id="deliveryCost">350 RSD</span>
+                </div>
+                <div class="total">
+                    <span>Ukupno za plaćanje:</span>
+                    <span id="cartTotal">350 RSD</span>
+                </div>
+                <p class="free-delivery-note">Besplatna dostava za porudžbine preko 3.000 RSD</p>
+            </div>
+            <a href="checkout.html" class="btn btn-checkout">Nastavi na plaćanje</a>
+        </div>
+    </div>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="about-title">O Vitanor-u</h1>
+            <p class="shop-subtitle">Naša priča o prirodi, zdravlju i kvalitetu</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-section">
+                <h2>Naša priča</h2>
+                <p>Vitanor je nastao iz ljubavi prema prirodi i želje da ljudima pružimo najkvalitetnije, prirodno sušeno voće. Osnovani smo 2024. godine sa ciljem da očuvamo autentičan ukus i hranljive vrednosti voća kroz pažljiv proces dehidracije.</p>
+                <p>Verujemo da zdrava ishrana ne mora da kompromituje ukus. Naš proces sušenja omogućava da uživate u prirodnoj slasti voća tokom cele godine, bez dodatka šećera, konzervansa ili veštačkih aroma.</p>
+            </div>
+            
+            <div class="about-section">
+                <h2>Naš proces</h2>
+                <p>Koristimo posebnu tehnologiju sušenja na niskim temperaturama koja čuva vitamine, minerale i prirodni ukus voća. Svaki proizvod prolazi kroz tri faze:</p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Selekcija</h3>
+                        <p>Biramo samo najkvalitetnije, zrele plodove od provjerenih dobavljača.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>Priprema</h3>
+                        <p>Pažljivo čistimo, peremo i sečemo voće pre sušenja.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>Sušenje</h3>
+                        <p>Sušimo na kontrolisanoj niskoj temperaturi da očuvamo hranljive sastojke.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2>Naše vrednosti</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🌱</div>
+                        <h3>Prirodnost</h3>
+                        <p>Bez veštačkih dodataka, konzervansa ili boja. Samo čisto voće.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">⭐</div>
+                        <h3>Kvalitet</h3>
+                        <p>Stroga kontrola kvaliteta kroz celokupan proces proizvodnje.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Poverenje</h3>
+                        <p>Gradimo dugoročne odnose sa našim kupcima kroz iskrenost i kvalitet.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <h2>Zašto izabrati nas?</h2>
+                <p>• <strong>100% prirodno</strong> - bez dodataka šećera ili konzervansa</p>
+                <p>• <strong>Visok kvalitet</strong> - biramo samo najbolje plodove</p>
+                <p>• <strong>Dug rok trajanja</strong> - idealno za čuvanje</p>
+                <p>• <strong>Versatilno korišćenje</strong> - u kolačima, muslijama, samostalno</p>
+                <p>• <strong>Brza dostava</strong> - šaljemo u roku od 24h</p>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="shop.html" class="btn btn-primary">Pogledajte naš asortiman</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <div class="logo-icon">🍃</div>
+                        <span class="logo-text">VITANOR</span>
+                    </div>
+                    <p class="footer-description">Prirodno sušeno voće i povrće bez aditiva i konzervansa.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +381 63 364 237</p>
+                        <p><i class="fas fa-envelope"></i> jovan.calic20@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indjija, Srbija</p>
+                        <p><i class="fas fa-clock"></i> 08:00 - 18:00 (Pon-Sub)</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Brzi linkovi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="shop.html">Prodavnica</a></li>
+                        <li><a href="about.html">O nama</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Informacije</h4>
+                    <p>Dostava: 350 RSD</p>
+                    <p>Besplatna dostava preko 3.000 RSD</p>
+                    <p>Plaćanje pouzećem</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vitanor. Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

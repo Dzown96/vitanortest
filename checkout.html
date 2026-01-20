@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poručivanje - Vitanor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .checkout-hero {
+            padding: 6rem 0 2rem;
+            background: linear-gradient(135deg, #2E7D32 0%, #8BC34A 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .checkout-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .checkout-content {
+            padding: 4rem 0;
+        }
+        
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 3rem;
+        }
+        
+        .checkout-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-section h2 {
+            color: #2E7D32;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #E8F5E9;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2C3E50;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 150ms ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2E7D32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .required {
+            color: #d32f2f;
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: #757575;
+            margin-top: 0.25rem;
+        }
+        
+        /* Order Summary */
+        .order-summary {
+            position: sticky;
+            top: 6rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            height: fit-content;
+        }
+        
+        .order-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #F5F5F5;
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-name {
+            flex: 1;
+            color: #2C3E50;
+        }
+        
+        .item-qty {
+            margin: 0 1rem;
+            color: #757575;
+            font-size: 0.875rem;
+        }
+        
+        .item-price {
+            font-weight: 500;
+            color: #2E7D32;
+        }
+        
+        .order-totals {
+            border-top: 2px solid #E8F5E9;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: #2C3E50;
+        }
+        
+        .total-row.final {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #E0E0E0;
+            color: #2E7D32;
+        }
+        
+        .free-delivery {
+            color: #2E7D32;
+            font-weight: 500;
+        }
+        
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+        
+        .terms-checkbox input[type="checkbox"] {
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+        
+        .terms-checkbox label {
+            font-size: 0.875rem;
+            color: #2C3E50;
+            line-height: 1.5;
+        }
+        
+        .terms-checkbox a {
+            color: #2E7D32;
+            text-decoration: underline;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .empty-cart-message {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #757575;
+        }
+        
+        .empty-cart-message a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        
+        .empty-cart-message a:hover {
+            text-decoration: underline;
+        }
+        
+        .delivery-info {
+            background: #E8F5E9;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .delivery-info p {
+            margin: 0;
+            color: #2C3E50;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .order-summary {
+                position: static;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-title {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .checkout-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🍃</div>
+                    <span class="logo-text">VITANOR</span>
+                </a>
+                <nav class="desktop-nav">
+                    <a href="index.html">Početna</a>
+                    <a href="shop.html">Prodavnica</a>
+                    <a href="about.html">O nama</a>
+                    <a href="contact.html">Kontakt</a>
+                </nav>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Početna</a>
+            <a href="shop.html">Prodavnica</a>
+            <a href="about.html">O nama</a>
+            <a href="contact.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Vaša korpa</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Korpa je prazna</p>
+        </div>
+        <div class="cart-summary">
+            <div class="cart-totals">
+                <div class="subtotal">
+                    <span>Ukupno proizvoda:</span>
+                    <span id="cartSubtotal">0 RSD</span>
+                </div>
+                <div class="delivery">
+                    <span>Dostava:</span>
+                    <span id="deliveryCost">350 RSD</span>
+                </div>
+                <div class="total">
+                    <span>Ukupno za plaćanje:</span>
+                    <span id="cartTotal">350 RSD</span>
+                </div>
+                <p class="free-delivery-note">Besplatna dostava za porudžbine preko 3.000 RSD</p>
+            </div>
+            <a href="checkout.html" class="btn btn-checkout">Nastavi na plaćanje</a>
+        </div>
+    </div>
+
+    <!-- Checkout Hero -->
+    <section class="checkout-hero">
+        <div class="container">
+            <h1 class="checkout-title">Završite porudžbinu</h1>
+            <p class="shop-subtitle">Popunite podatke za dostavu i poručivanje</p>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="checkout-content">
+        <div class="container">
+            <div class="checkout-grid">
+                <!-- Left Column: Form -->
+                <div class="checkout-form">
+                    <div class="checkout-section">
+                        <h2>Podaci za dostavu</h2>
+                        
+                        <div class="form-group">
+                            <label for="email">Email adresa <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="Email">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Ime <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" required placeholder="Ime">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName">Prezime <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Prezime">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Broj telefona <span class="form-note">(opciono)</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="Telefon">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Ulica i broj <span class="required">*</span></label>
+                            <input type="text" id="address" name="address" required placeholder="Ulica i broj">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Grad <span class="required">*</span></label>
+                                <input type="text" id="city" name="city" required placeholder="Grad">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="postalCode">Poštanski broj <span class="required">*</span></label>
+                                <input type="text" id="postalCode" name="postalCode" required placeholder="Poštanski broj">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Država <span class="required">*</span></label>
+                            <select id="country" name="country" required>
+                                <option value="">Izaberite državu</option>
+                                <option value="rs" selected>Srbija</option>
+                                <option value="me">Crna Gora</option>
+                                <option value="ba">Bosna i Hercegovina</option>
+                                <option value="hr">Hrvatska</option>
+                                <option value="other">Ostalo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-section">
+                        <h2>Način plaćanja i dostave</h2>
+                        
+                        <div class="delivery-info">
+                            <p><strong>Dostava:</strong> Kurirskom službou</p>
+                            <p><strong>Plaćanje:</strong> Pouzećem (pri preuzimanju)</p>
+                            <p><strong>Rok isporuke:</strong> 2-3 radna dana</p>
+                            <p><strong>Cena dostave:</strong> 350 RSD (besplatno za porudžbine preko 3.000 RSD)</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Napomena za dostavljača <span class="form-note">(opciono)</span></label>
+                            <textarea id="notes" name="notes" rows="3" placeholder="Napomena"></textarea>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Order Summary -->
+                <div class="order-summary" id="orderSummary">
+                    <h2>Pregled porudžbine</h2>
+                    
+                    <div class="order-items" id="orderItems">
+                        <!-- Order items will be loaded here -->
+                        <div class="empty-cart-message">
+                            <i class="fas fa-shopping-basket" style="font-size: 3rem; color: #E0E0E0; margin-bottom: 1rem;"></i>
+                            <p>Vaša korpa je prazna</p>
+                            <a href="shop.html">Vratite se u prodavnicu</a>
+                        </div>
+                    </div>
+                    
+                    <div class="order-totals" id="orderTotals" style="display: none;">
+                        <div class="total-row">
+                            <span>Ukupno proizvoda:</span>
+                            <span id="summarySubtotal">0 RSD</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Dostava:</span>
+                            <span id="summaryDelivery">350 RSD</span>
+                        </div>
+                        <div class="total-row final">
+                            <span>Ukupno za plaćanje:</span>
+                            <span id="summaryTotal">350 RSD</span>
+                        </div>
+                        <p id="freeDeliveryNote" class="free-delivery" style="display: none; text-align: center; margin-top: 0.5rem;">
+                            Besplatna dostava!
+                        </p>
+                    </div>
+                    
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">
+                            Saglasan/na sam sa <a href="#" onclick="alert('Uslovi korišćenja će biti dodani kasnije.'); return false;">uslovima korišćenja</a> i potvrđujem porudžbinu. Podaci će biti korišćeni isključivo za obradu ove narudžbine.
+                        </label>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary checkout-btn" id="submitOrder">
+                        <i class="fas fa-check-circle"></i> Potvrdi porudžbinu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <div class="logo-icon">🍃</div>
+                        <span class="logo-text">VITANOR</span>
+                    </div>
+                    <p class="footer-description">Prirodno sušeno voće i povrće bez aditiva i konzervansa.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +381 63 364 237</p>
+                        <p><i class="fas fa-envelope"></i> jovan.calic20@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indjija, Srbija</p>
+                        <p><i class="fas fa-clock"></i> 08:00 - 18:00 (Pon-Sub)</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Brzi linkovi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="shop.html">Prodavnica</a></li>
+                        <li><a href="about.html">O nama</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Informacije</h4>
+                    <p>Dostava: 350 RSD</p>
+                    <p>Besplatna dostava preko 3.000 RSD</p>
+                    <p>Plaćanje pouzećem</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vitanor. Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Load order summary from cart
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrderSummary();
+            
+            // Form submission
+            document.getElementById('submitOrder').addEventListener('click', submitOrder);
+        });
+        
+        function loadOrderSummary() {
+            const orderItems = document.getElementById('orderItems');
+            const orderTotals = document.getElementById('orderTotals');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            if (cart.length === 0) {
+                orderItems.innerHTML = `
+                    <div class="empty-cart-message">
+                        <i class="fas fa-shopping-basket" style="font-size: 3rem; color: #E0E0E0; margin-bottom: 1rem;"></i>
+                        <p>Vaša korpa je prazna</p>
+                        <a href="shop.html">Vratite se u prodavnicu</a>
+                    </div>
+                `;
+                orderTotals.style.display = 'none';
+                return;
+            }
+            
+            // Display order items
+            let itemsHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                itemsHTML += `
+                    <div class="order-item">
+                        <span class="item-name">${item.name.charAt(0).toUpperCase() + item.name.slice(1)}</span>
+                        <span class="item-qty">${item.quantity} × ${item.weight}</span>
+                        <span class="item-price">${itemTotal.toFixed(0)} RSD</span>
+                    </div>
+                `;
+            });
+            
+            orderItems.innerHTML = itemsHTML;
+            
+            // Calculate delivery and total
+            const delivery = subtotal >= 3000 ? 0 : 350;
+            const total = subtotal + delivery;
+            
+            // Update totals
+            document.getElementById('summarySubtotal').textContent = subtotal.toFixed(0) + ' RSD';
+            document.getElementById('summaryDelivery').textContent = delivery === 0 ? 'BESPLATNO' : delivery + ' RSD';
+            document.getElementById('summaryTotal').textContent = total.toFixed(0) + ' RSD';
+            
+            // Show/hide free delivery note
+            const freeDeliveryNote = document.getElementById('freeDeliveryNote');
+            if (delivery === 0) {
+                freeDeliveryNote.style.display = 'block';
+                document.getElementById('summaryDelivery').style.color = '#2E7D32';
+                document.getElementById('summaryDelivery').style.fontWeight = '600';
+            } else {
+                freeDeliveryNote.style.display = 'none';
+                document.getElementById('summaryDelivery').style.color = '';
+                document.getElementById('summaryDelivery').style.fontWeight = '';
+            }
+            
+            // Show totals section
+            orderTotals.style.display = 'block';
+        }
+        
+        function submitOrder() {
+            // Validate form
+            const form = document.querySelector('.checkout-form');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#d32f2f';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+            
+            // Check terms checkbox
+            const terms = document.getElementById('terms');
+            if (!terms.checked) {
+                isValid = false;
+                alert('Morate se složiti sa uslovima korišćenja.');
+                return;
+            }
+            
+            if (!isValid) {
+                alert('Molimo popunite sva obavezna polja označena sa *.');
+                return;
+            }
+            
+            // Check if cart is empty
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Vaša korpa je prazna. Dodajte proizvode pre nego što poručite.');
+                return;
+            }
+            
+            // Get form data
+            const orderData = {
+                customer: {
+                    email: document.getElementById('email').value,
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    phone: document.getElementById('phone').value || 'Nije navedeno',
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    postalCode: document.getElementById('postalCode').value,
+                    country: document.getElementById('country').value,
+                    notes: document.getElementById('notes').value || 'Nema napomene'
+                },
+                order: cart,
+                totals: {
+                    subtotal: parseFloat(document.getElementById('summarySubtotal').textContent),
+                    delivery: document.getElementById('summaryDelivery').textContent.includes('BESPLATNO') ? 0 : 350,
+                    total: parseFloat(document.getElementById('summaryTotal').textContent)
+                },
+                date: new Date().toLocaleString('sr-RS'),
+                orderId: 'VIT-' + Date.now().toString().slice(-6)
+            };
+            
+            // Show loading
+            const submitBtn = document.getElementById('submitOrder');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Obrada porudžbine...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Save order to localStorage (simulating database)
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                orders.push(orderData);
+                localStorage.setItem('orders', JSON.stringify(orders));
+                
+                // Clear cart
+                localStorage.setItem('cart', JSON.stringify([]));
+                
+                // Update cart count
+                if (typeof updateCartCount === 'function') {
+                    updateCartCount();
+                }
+                
+                // Show success message
+                alert(`Hvala vam na porudžbini!\n\nBroj porudžbine: ${orderData.orderId}\nUkupan iznos: ${orderData.totals.total} RSD\n\nPodaci o porudžbini su poslati na: ${orderData.customer.email}\n\nKontaktiraćemo vas za potvrdu dostave.`);
+                
+                // Redirect to home page
+                window.location.href = 'index.html';
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        }
+        
+        // Real-time form validation
+        document.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

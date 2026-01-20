@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitanor - Prirodno Sušeno Voće</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🍃</div>
+                    <span class="logo-text">VITANOR</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <a href="index.html" class="active">Početna</a>
+                    <a href="shop.html">Prodavnica</a>
+                    <a href="about.html">O nama</a>
+                    <a href="contact.html">Kontakt</a>
+                </nav>
+
+                <!-- Cart Icon -->
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="cart-count">0</span>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html" class="active">Početna</a>
+            <a href="shop.html">Prodavnica</a>
+            <a href="about.html">O nama</a>
+            <a href="contact.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Vaša korpa</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here -->
+            <p class="empty-cart">Korpa je prazna</p>
+        </div>
+        <div class="cart-summary">
+            <div class="cart-totals">
+                <div class="subtotal">
+                    <span>Ukupno proizvoda:</span>
+                    <span id="cartSubtotal">0 RSD</span>
+                </div>
+                <div class="delivery">
+                    <span>Dostava:</span>
+                    <span id="deliveryCost">350 RSD</span>
+                </div>
+                <div class="total">
+                    <span>Ukupno za plaćanje:</span>
+                    <span id="cartTotal">350 RSD</span>
+                </div>
+                <p class="free-delivery-note">Besplatna dostava za porudžbine preko 3.000 RSD</p>
+            </div>
+            <a href="checkout.html" class="btn btn-checkout">Nastavi na plaćanje</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Prirodno Sušeno <span class="highlight">Voće</span></h1>
+                <p class="hero-subtitle">Bez aditiva, bez konzervansa, 100% prirodno. Očuvajte ukus prirode u svakom zalogaju.</p>
+                <a href="shop.html" class="btn btn-primary">Pogledaj ponudu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Zašto birati Vitanor?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🍃</div>
+                    <h3>100% Prirodno</h3>
+                    <p>Koristimo samo prirodno voće bez veštačkih dodataka. Sušimo na niskim temperaturama da očuvamo vitamine.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚫</div>
+                    <h3>Bez Aditiva</h3>
+                    <p>Nema šećera, konzervansa ili veštačkih aroma. Samo čisto, sušeno voće kakvo priroda stvara.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📅</div>
+                    <h3>Dug Rok Trajanja</h3>
+                    <p>Hranite se zdravo cele godine. Naš proces sušenja obezbeđuje dug rok čuvanja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Istaknuti Proizvodi</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-background"></div>
+                        <img src="images/proizvod1.png" alt="Sušena banana">
+                    </div>
+                    <h3 class="product-title">Sušena banana</h3>
+                    <div class="product-price">
+                        <span class="price-amount">550</span> RSD
+                        <span class="price-weight">/ 100g</span>
+                    </div>
+                    <div class="weight-selector">
+                        <button class="weight-option" data-weight="50g" data-price="300" data-product="banana">
+                            50g
+                        </button>
+                        <button class="weight-option active" data-weight="100g" data-price="550" data-product="banana">
+                            100g
+                        </button>
+                    </div>
+                    <button class="btn btn-add-to-cart" data-product="banana" data-weight="100g" data-price="550">
+                        <i class="fas fa-plus"></i> Dodaj u korpu
+                    </button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-background"></div>
+                        <img src="images/proizvod2.png" alt="Sušena jagoda">
+                    </div>
+                    <h3 class="product-title">Sušena jagoda</h3>
+                    <div class="product-price">
+                        <span class="price-amount">650</span> RSD
+                        <span class="price-weight">/ 100g</span>
+                    </div>
+                    <div class="weight-selector">
+                        <button class="weight-option" data-weight="50g" data-price="350" data-product="jagoda">
+                            50g
+                        </button>
+                        <button class="weight-option active" data-weight="100g" data-price="650" data-product="jagoda">
+                            100g
+                        </button>
+                    </div>
+                    <button class="btn btn-add-to-cart" data-product="jagoda" data-weight="100g" data-price="650">
+                        <i class="fas fa-plus"></i> Dodaj u korpu
+                    </button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-background"></div>
+                        <img src="images/proizvod3.png" alt="Sušena jabuka">
+                    </div>
+                    <h3 class="product-title">Sušena jabuka</h3>
+                    <div class="product-price">
+                        <span class="price-amount">450</span> RSD
+                        <span class="price-weight">/ 100g</span>
+                    </div>
+                    <div class="weight-selector">
+                        <button class="weight-option" data-weight="50g" data-price="250" data-product="jabuka">
+                            50g
+                        </button>
+                        <button class="weight-option active" data-weight="100g" data-price="450" data-product="jabuka">
+                            100g
+                        </button>
+                    </div>
+                    <button class="btn btn-add-to-cart" data-product="jabuka" data-weight="100g" data-price="450">
+                        <i class="fas fa-plus"></i> Dodaj u korpu
+                    </button>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="image-background"></div>
+                        <img src="images/proizvod4.png" alt="Sušena kajsija">
+                    </div>
+                    <h3 class="product-title">Sušena kajsija</h3>
+                    <div class="product-price">
+                        <span class="price-amount">600</span> RSD
+                        <span class="price-weight">/ 100g</span>
+                    </div>
+                    <div class="weight-selector">
+                        <button class="weight-option" data-weight="50g" data-price="320" data-product="kajsija">
+                            50g
+                        </button>
+                        <button class="weight-option active" data-weight="100g" data-price="600" data-product="kajsija">
+                            100g
+                        </button>
+                    </div>
+                    <button class="btn btn-add-to-cart" data-product="kajsija" data-weight="100g" data-price="600">
+                        <i class="fas fa-plus"></i> Dodaj u korpu
+                    </button>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="shop.html" class="btn btn-secondary">Vidi sve proizvode</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <div class="logo-icon">🍃</div>
+                        <span class="logo-text">VITANOR</span>
+                    </div>
+                    <p class="footer-description">Prirodno sušeno voće i povrće bez aditiva i konzervansa. Očuvamo prirodu u svakom zalogaju.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +381 63 364 237</p>
+                        <p><i class="fas fa-envelope"></i> jovan.calic20@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indjija, Srbija</p>
+                        <p><i class="fas fa-clock"></i> 08:00 - 18:00 (Pon-Sub)</p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Brzi linkovi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="shop.html">Prodavnica</a></li>
+                        <li><a href="about.html">O nama</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><a href="checkout.html">Poručivanje</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informacije</h4>
+                    <p>Dostava: 350 RSD</p>
+                    <p>Besplatna dostava za porudžbine preko 3.000 RSD</p>
+                    <p>Plaćanje pouzećem</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook (uskoro)"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram (uskoro)"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vitanor. Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Initialize weight selector and add to cart buttons for home page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Weight selector functionality for home page
+            document.querySelectorAll('.weight-option').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const parent = this.parentElement;
+                    parent.querySelectorAll('.weight-option').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update price display
+                    const productCard = this.closest('.product-card');
+                    const priceElement = productCard.querySelector('.product-price .price-amount');
+                    const weightElement = productCard.querySelector('.product-price .price-weight');
+                    const addToCartBtn = productCard.querySelector('.btn-add-to-cart');
+                    
+                    if (priceElement) {
+                        priceElement.textContent = this.dataset.price;
+                    }
+                    if (weightElement) {
+                        weightElement.textContent = `/ ${this.dataset.weight}`;
+                    }
+                    if (addToCartBtn) {
+                        addToCartBtn.dataset.weight = this.dataset.weight;
+                        addToCartBtn.dataset.price = this.dataset.price;
+                    }
+                });
+            });
+            
+            // Add to cart buttons for home page
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const productName = this.dataset.product;
+                    const weight = this.dataset.weight;
+                    const price = parseInt(this.dataset.price);
+                    
+                    if (typeof addToCart === 'function') {
+                        addToCart(productName, weight, price);
+                        
+                        // Animation effect
+                        const rect = this.getBoundingClientRect();
+                        const cartRect = document.querySelector('.cart-icon')?.getBoundingClientRect();
+                        
+                        if (cartRect) {
+                            const flyingItem = document.createElement('div');
+                            flyingItem.className = 'flying-item';
+                            flyingItem.innerHTML = '🍎';
+                            flyingItem.style.position = 'fixed';
+                            flyingItem.style.left = rect.left + 'px';
+                            flyingItem.style.top = rect.top + 'px';
+                            flyingItem.style.fontSize = '20px';
+                            flyingItem.style.zIndex = '10000';
+                            flyingItem.style.pointerEvents = 'none';
+                            flyingItem.style.transition = 'all 0.5s ease';
+                            
+                            document.body.appendChild(flyingItem);
+                            
+                            setTimeout(() => {
+                                flyingItem.style.left = cartRect.left + 'px';
+                                flyingItem.style.top = cartRect.top + 'px';
+                                flyingItem.style.transform = 'scale(0.5)';
+                                flyingItem.style.opacity = '0.5';
+                            }, 10);
+                            
+                            setTimeout(() => {
+                                document.body.removeChild(flyingItem);
+                            }, 500);
+                        }
+                    }
+                });
+            });
+            
+            // Adjust image sizes based on aspect ratio
+            setTimeout(() => {
+                document.querySelectorAll('.product-image img').forEach(img => {
+                    img.onload = function() {
+                        const aspectRatio = this.naturalWidth / this.naturalHeight;
+                        
+                        // Ako je slika viša nego šira (pakovanje), koristimo max-height
+                        if (aspectRatio < 1) {
+                            this.style.maxWidth = '70%';
+                            this.style.maxHeight = '85%';
+                        } 
+                        // Ako je slika šira nego viša, koristimo max-width
+                        else {
+                            this.style.maxWidth = '85%';
+                            this.style.maxHeight = '70%';
+                        }
+                    };
+                    
+                    // Force load if already cached
+                    if (img.complete) {
+                        img.onload();
+                    }
+                });
+            }, 500);
+        });
+    </script>
+</body>
+</html>

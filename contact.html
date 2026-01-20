@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Vitanor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-hero {
+            padding: 6rem 0 2rem;
+            background: linear-gradient(135deg, #2E7D32 0%, #8BC34A 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-content {
+            padding: 4rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .contact-info h2,
+        .contact-form h2 {
+            color: #2E7D32;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+        
+        .contact-info p {
+            color: #2C3E50; /* ISPRAVLJENO: Tamna boja umesto bele */
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-icon {
+            background: #2E7D32;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 0.25rem;
+            color: #2C3E50;
+        }
+        
+        .contact-text p {
+            color: #757575;
+            margin: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2C3E50;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 150ms ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2E7D32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-title {
+                font-size: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🍃</div>
+                    <span class="logo-text">VITANOR</span>
+                </a>
+                <nav class="desktop-nav">
+                    <a href="index.html">Početna</a>
+                    <a href="shop.html">Prodavnica</a>
+                    <a href="about.html">O nama</a>
+                    <a href="contact.html" class="active">Kontakt</a>
+                </nav>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Početna</a>
+            <a href="shop.html">Prodavnica</a>
+            <a href="about.html">O nama</a>
+            <a href="contact.html" class="active">Kontakt</a>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Vaša korpa</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Korpa je prazna</p>
+        </div>
+        <div class="cart-summary">
+            <div class="cart-totals">
+                <div class="subtotal">
+                    <span>Ukupno proizvoda:</span>
+                    <span id="cartSubtotal">0 RSD</span>
+                </div>
+                <div class="delivery">
+                    <span>Dostava:</span>
+                    <span id="deliveryCost">350 RSD</span>
+                </div>
+                <div class="total">
+                    <span>Ukupno za plaćanje:</span>
+                    <span id="cartTotal">350 RSD</span>
+                </div>
+                <p class="free-delivery-note">Besplatna dostava za porudžbine preko 3.000 RSD</p>
+            </div>
+            <a href="checkout.html" class="btn btn-checkout">Nastavi na plaćanje</a>
+        </div>
+    </div>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="contact-title">Kontaktirajte nas</h1>
+            <p class="shop-subtitle">Tu smo da odgovorimo na sva vaša pitanja</p>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Kontakt informacije</h2>
+                    <p>Imate pitanja, sugestije ili želite da poručite veću količinu? Kontaktirajte nas putem bilo kog od kanala komunikacije.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Adresa</h4>
+                                <p>Indjija, Srbija</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Telefon</h4>
+                                <p>+381 63 364 237</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>jovan.calic20@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Radno vreme</h4>
+                                <p>Ponedeljak - Subota: 08:00 - 18:00<br>
+                                Nedelja: zatvoreno</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Pošaljite poruku</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Ime i prezime *</label>
+                            <input type="text" id="name" name="name" required placeholder="Ime i prezime">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email adresa *</label>
+                            <input type="email" id="email" name="email" required placeholder="Email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Predmet</label>
+                            <select id="subject" name="subject">
+                                <option value="order">Porudžbina</option>
+                                <option value="question">Pitanje o proizvodima</option>
+                                <option value="cooperation">Saradnja</option>
+                                <option value="other">Ostalo</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Poruka *</label>
+                            <textarea id="message" name="message" required placeholder="Vaša poruka"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Pošalji poruku
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d562.6460243649822!2d20.07508896942937!3d45.04826412137587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b1a33ee84b403%3A0x22d43f0e2602ce9b!2z0JjQvdC00LjQttC40L0!5e0!3m2!1ssr!2srs!4v1705771234567!5m2!1ssr!2srs" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <div class="logo-icon">🍃</div>
+                        <span class="logo-text">VITANOR</span>
+                    </div>
+                    <p class="footer-description">Prirodno sušeno voće i povrće bez aditiva i konzervansa.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +381 63 364 237</p>
+                        <p><i class="fas fa-envelope"></i> jovan.calic20@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indjija, Srbija</p>
+                        <p><i class="fas fa-clock"></i> 08:00 - 18:00 (Pon-Sub)</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Brzi linkovi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="shop.html">Prodavnica</a></li>
+                        <li><a href="about.html">O nama</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Informacije</h4>
+                    <p>Dostava: 350 RSD</p>
+                    <p>Besplatna dostava preko 3.000 RSD</p>
+                    <p>Plaćanje pouzećem</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vitanor. Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Simple validation
+            if (!formData.name || !formData.email || !formData.message) {
+                alert('Molimo popunite sva obavezna polja.');
+                return;
+            }
+            
+            // In a real app, you would send this to a server
+            // For now, we'll just show a success message
+            alert('Hvala vam! Vaša poruka je uspešno poslata. Odgovorićemo u najkraćem mogućem roku.');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Update cart count
+        if (typeof updateCartCount === 'function') {
+            updateCartCount();
+        }
+    </script>
+</body>
+</html>

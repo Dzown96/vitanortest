@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodavnica - Vitanor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🍃</div>
+                    <span class="logo-text">VITANOR</span>
+                </a>
+                <nav class="desktop-nav">
+                    <a href="index.html">Početna</a>
+                    <a href="shop.html" class="active">Prodavnica</a>
+                    <a href="about.html">O nama</a>
+                    <a href="contact.html">Kontakt</a>
+                </nav>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Početna</a>
+            <a href="shop.html" class="active">Prodavnica</a>
+            <a href="about.html">O nama</a>
+            <a href="contact.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Vaša korpa</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Korpa je prazna</p>
+        </div>
+        <div class="cart-summary">
+            <div class="cart-totals">
+                <div class="subtotal">
+                    <span>Ukupno proizvoda:</span>
+                    <span id="cartSubtotal">0 RSD</span>
+                </div>
+                <div class="delivery">
+                    <span>Dostava:</span>
+                    <span id="deliveryCost">350 RSD</span>
+                </div>
+                <div class="total">
+                    <span>Ukupno za plaćanje:</span>
+                    <span id="cartTotal">350 RSD</span>
+                </div>
+                <p class="free-delivery-note">Besplatna dostava za porudžbine preko 3.000 RSD</p>
+            </div>
+            <a href="checkout.html" class="btn btn-checkout">Nastavi na plaćanje</a>
+        </div>
+    </div>
+
+    <!-- Shop Hero -->
+    <section class="shop-hero">
+        <div class="container">
+            <h1 class="shop-title">Naši Proizvodi</h1>
+            <p class="shop-subtitle">Izaberite između naših prirodnih delicija</p>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="category-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">🍎 Sve</button>
+                <button class="filter-btn" data-category="classic">🍌 Klasično voće</button>
+                <button class="filter-btn" data-category="citrus">🍊 Citrusi</button>
+                <button class="filter-btn" data-category="exotic">🥝 Egzotično voće</button>
+                <button class="filter-btn" data-category="vegetable">🥕 Povrće</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="shop-products">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Proizvodi će biti dodati JavaScript-om -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <div class="logo-icon">🍃</div>
+                        <span class="logo-text">VITANOR</span>
+                    </div>
+                    <p class="footer-description">Prirodno sušeno voće i povrće bez aditiva i konzervansa. Očuvamo prirodu u svakom zalogaju.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +381 63 364 237</p>
+                        <p><i class="fas fa-envelope"></i> jovan.calic20@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indjija, Srbija</p>
+                        <p><i class="fas fa-clock"></i> 08:00 - 18:00 (Pon-Sub)</p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Brzi linkovi</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="shop.html">Prodavnica</a></li>
+                        <li><a href="about.html">O nama</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                        <li><a href="checkout.html">Poručivanje</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informacije</h4>
+                    <p>Dostava: 350 RSD</p>
+                    <p>Besplatna dostava za porudžbine preko 3.000 RSD</p>
+                    <p>Plaćanje pouzećem</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook (uskoro)"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram (uskoro)"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vitanor. Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/shop.js"></script>
+</body>
+</html>
